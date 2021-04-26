@@ -1,0 +1,40 @@
+FUNCTION insertionSort(int arr[], int n) : void
+VAR
+    i,j,key:INTEGER;
+BEGIN
+FOR i FROM 1 TO n STEP 1  DO{
+        key = arr[ i ];
+        j = i — 1;
+    /* Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position */
+    while(j >= 0 && arr[ j ] > key){
+        arr[ j+1] := arr[ j ];
+        j = j — 1;
+}
+        arr[j+1] = key;
+}
+END_FOR
+
+    RETURN NULL ;
+END
+
+// A utility function to print an array of size n
+FUNCTION afficheArray(int arr[], int n) : void
+VAR
+    i:INTEGE;
+BEGIN
+    FOR i FROM 0 TO n STEP 1  DO
+        Write("arr[i]");
+    END_FOR
+    RETURN NULL ;
+END
+/* Driver program to test insertion sort */
+ALGORITHM SortInsertionArray
+VAR
+   arr : ARRAY_OF INTEGER[5];
+   n : INTEGER;
+BEGIN
+    arr:= {12, 13, 6, 10} ;
+    n:= sizeof(arr);
+    insertionSort(arr, n);
+    afficheArray(arr, n);
+END
